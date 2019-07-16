@@ -1,0 +1,52 @@
+{
+	"name": "Org1",
+	"version": "1.0.0",
+	"client": {
+		"organization": "Org1",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				}
+			}
+		}
+	},
+	"organizations": {
+		"Org1": {
+			"mspid": "Org1MSP",
+			"peers": [
+				"peer0.org1.org",
+				"peer1.org1.org"
+			],
+      "certificateAuthorities": [
+        "ca.org1.org"
+      ]
+		}
+	},
+	"peers": {
+		"peer0.org1.org": {
+			"url": "grpcs://localhost:7051",
+			"tlsCACerts": {
+				"path": "crypto-config/peerOrganizations/org1.org/tlsca/tlsca.org1.org-cert.pem"
+			},
+			"grpcOptions": {
+				"ssl-target-name-override": "peer0.org1.org"
+			}
+		},
+		"peer1.org1.org": {
+			"url": "grpcs://localhost:8051",
+			"tlsCACerts": {
+				"path": "crypto-config/peerOrganizations/org1.org/tlsca/tlsca.org1.org-cert.pem"
+			},
+			"grpcOptions": {
+				"ssl-target-name-override": "peer1.org1.org"
+			}
+		}
+	},
+  "certificateAuthorities": {
+    "ca.org1.org": {
+      "url": "https://localhost:7054",
+      "caName": "ca.org1.org"
+    }
+  }
+}
